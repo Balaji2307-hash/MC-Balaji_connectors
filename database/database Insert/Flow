@@ -38,13 +38,8 @@ output json
 				<ee:set-payload ><![CDATA[%dw 2.0
 output application/json
 ---
-
 {
-	"id": payload.id,
-	"email": payload.email,
-	"name":payload.name,
-	"address": payload.address,
-	"phone":payload.phone
+	"status": "success"
 }]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
