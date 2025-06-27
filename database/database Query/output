@@ -1,0 +1,72 @@
+[
+    {
+        "id": 1,
+        "email": "ananya.sharma@example.com",
+        "name": "Ananya Sharma",
+        "address": "12 MG Road, Bangalore",
+        "phone": "9876543210"
+    },
+    {
+        "id": 2,
+        "email": "rahul.mehta@example.com",
+        "name": "Rahul Mehta",
+        "address": "45 Nehru Street, Mumbai",
+        "phone": "9123456780"
+    },
+    {
+        "id": 3,
+        "email": "priya.verma@example.com",
+        "name": "Priya Verma",
+        "address": "78 Park Lane, Delhi",
+        "phone": "9988776655"
+    },
+    {
+        "id": 4,
+        "email": "arjun.singh@example.com",
+        "name": "Arjun Singh",
+        "address": "33 Lake View Road, Chennai",
+        "phone": "9876512345"
+    },
+    {
+        "id": 5,
+        "email": "sneha.reddy@example.com",
+        "name": "Sneha Reddy",
+        "address": "99 Banjara Hills, Hyderabad",
+        "phone": "9845098450"
+    },
+    {
+        "id": 6,
+        "email": "karthik.nair@example.com",
+        "name": "Karthik Nair",
+        "address": "17 MG Road, Kochi",
+        "phone": "9741234567"
+    },
+    {
+        "id": 7,
+        "email": "divya.joshi@example.com",
+        "name": "Divya Joshi",
+        "address": "56 Hilltop Colony, Pune",
+        "phone": "9012345678"
+    },
+    {
+        "id": 8,
+        "email": "ravi.kumar@example.com",
+        "name": "Ravi Kumar",
+        "address": "11 Residency Road, Lucknow",
+        "phone": "9900112233"
+    },
+    {
+        "id": 9,
+        "email": "meena.iyer@example.com",
+        "name": "Meena Iyer",
+        "address": "202 Gandhi Nagar, Ahmedabad",
+        "phone": "8899776655"
+    },
+    {
+        "id": 10,
+        "email": "vikram.patel@example.com",
+        "name": "Vikram Patel",
+        "address": "88 Lotus Street, Surat",
+        "phone": "9555123456"
+    }
+]
