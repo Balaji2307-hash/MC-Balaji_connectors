@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
+      xmlns:file="http://www.mulesoft.org/schema/mule/file"
+      xmlns:db="http://www.mulesoft.org/schema/mule/db"
+      xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+
+ 
+
+    <http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="a0b28871-b740-4dda-a484-b2a24e70bdf2" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<file:config name="File_Config" doc:name="File Config" doc:id="b4a30452-cad6-4fe9-89a0-e5aed4a62804" >
+		<file:connection workingDir="C:\Users\Balaji S\Desktop\exercise" />
+	</file:config>
+	<flow name="asyncExampleFlow">
+        <http:listener config-ref="HTTP_Listener_config" path="/async" doc:name="HTTP Listener"/>
+        
+        <!-- Async scope to run logger without blocking the flow -->
+        
+        <!-- Immediate response to the HTTP caller -->
+		<file:rename doc:name="Rename" doc:id="cd4aa6ce-b6dc-427e-ad69-e471eb074d9e" config-ref="File_Config" path="C:\Users\Balaji S\Desktop\exercise" to="exercise" overwrite="true"/>
+		<logger level="INFO" doc:name="Logger" doc:id="63f3dd08-f99a-4e7b-a2c0-e24111deaed9" message="name changed successfully"/>
+    
+</flow>
+
+</mule>
