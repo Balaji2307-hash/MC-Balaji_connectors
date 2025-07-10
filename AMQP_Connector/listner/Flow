@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:amqp="http://www.mulesoft.org/schema/mule/amqp"
+      xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core"
+      xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
+      xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+        http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+        http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
+http://www.mulesoft.org/schema/mule/amqp http://www.mulesoft.org/schema/mule/amqp/current/mule-amqp.xsd">
+
+ 
+
+    <http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="a0b28871-b740-4dda-a484-b2a24e70bdf2" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<file:config name="File_Config" doc:name="File Config" doc:id="b4a30452-cad6-4fe9-89a0-e5aed4a62804" >
+		<file:connection workingDir="C:\Users\Balaji S\Desktop\exercise" />
+	</file:config>
+	<amqp:config name="AMQP_Config" doc:name="AMQP Config" doc:id="8a29cfda-8f88-4b55-ae1d-a1d5876153ac" >
+		<amqp:connection host="armadillo.rmq.cloudamqp.com" port="5672" virtualHost="itylsezp" username="itylsezp" password="v9xazSFOqAC2LYLEkWay37A52ekOQG0n" />
+	</amqp:config>
+	<flow name="trainingFlow1" doc:id="56ae9b03-4388-4b6c-aa59-35f1c2b017e5" >
+		<http:listener doc:name="Listener" doc:id="112704cf-878b-4c17-9b4a-53cc0c89e929" config-ref="HTTP_Listener_config" path="/listen"/>
+		<amqp:publish doc:name="Publish" doc:id="913de47f-1c7d-41c3-bdd4-b2ca70c9823c" config-ref="AMQP_Config" exchangeName="test" />
+		<logger level="INFO" doc:name="Logger" doc:id="380ccfee-8e05-409c-9f61-758ad6196d08" />
+	</flow>
+	<flow name="trainingFlow" doc:id="e9961a55-74e2-4f14-a288-b3c222208a41" >
+		<amqp:listener doc:name="Listener" doc:id="ed4e3c93-3678-435b-99c5-84d65ed3d405" config-ref="AMQP_Config" queueName="example"/>
+		<ee:transform doc:name="Transform Message" doc:id="55050dd0-da4c-4dd0-8122-4e40e8c0d22f" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload
+]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="664264c6-9512-4cdd-a347-4407352f1199" />
+	</flow>
+    
+
+
+</mule>
